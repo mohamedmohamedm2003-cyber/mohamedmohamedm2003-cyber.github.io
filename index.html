@@ -6,93 +6,61 @@
     <title>Mohamed Mahmoud Ahmed | Civil Engineer</title>
     <style>
         :root {
-            --primary: #1a2a6c;
-            --secondary: #b21f1f;
-            --accent: #fdbb2d;
-            --bg: #f8f9fa;
+            --navy: #1a2a6c;
+            --gold: #fdbb2d;
+            --light: #f8f9fa;
         }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            color: #333;
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--light); color: #333; line-height: 1.6; }
+        
+        /* Layout */
+        .container { max-width: 1000px; margin: auto; padding: 20px; }
+        
+        /* Hero Section */
+        .hero { 
+            background: var(--navy); 
+            color: white; 
+            text-align: center; 
+            padding: 60px 20px; 
+            border-bottom: 8px solid var(--gold);
+        }
+        .profile-img { 
+            width: 160px; height: 160px; 
+            border-radius: 50%; 
+            border: 4px solid white; 
+            object-fit: cover; 
+            margin-bottom: 15px;
         }
 
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(26, 42, 108, 0.9), rgba(26, 42, 108, 0.9)), 
-                        url('background-texture.jpg'); /* Optional background */
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--accent);
-            object-fit: cover;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
-        .hero h1 { font-size: 2.5rem; margin: 10px 0; }
-
-        /* --- ABOUT ME SECTION --- */
-        .about-section {
-            max-width: 800px;
-            margin: -40px auto 40px;
+        /* Expressive About Me */
+        .about-card {
             background: white;
             padding: 40px;
-            border-radius: 15px;
+            margin-top: -30px;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        .about-section h2 { color: var(--primary); margin-top: 0; }
-        .about-text { font-size: 1.1rem; line-height: 1.8; color: #555; }
-
-        /* --- GRID SYSTEM --- */
-        .container { max-width: 1100px; margin: auto; padding: 20px; }
-        
+        /* Grid for Projects/Expertise */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            margin-top: 30px;
         }
-
         .card {
             background: white;
-            border-radius: 12px;
-            overflow: hidden; /* Clips the image to the border radius */
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
-
         .card:hover { transform: translateY(-10px); }
-
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover; /* Keeps image proportions */
-            background: #ddd; /* Fallback color */
-        }
-
+        .card-img { width: 100%; height: 200px; object-fit: cover; background: #ddd; }
         .card-content { padding: 20px; }
-        .card-content h3 { color: var(--primary); margin: 0 0 10px; }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background: var(--accent);
-            color: #1a2a6c;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
+        h2 { color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -103,34 +71,31 @@
         <p>Civil Engineer | Geotechnical Researcher | Structural Systems</p>
     </header>
 
-    <div class="about-section">
-        <h2>Engineering Vision</h2>
-        <p class="about-text">
-            As a Civil Engineer with a deep focus on <strong>geotechnical performance and structural integrity</strong>, 
-            I bridge the gap between complex soil analysis and practical field execution. My approach is rooted 
-            in analytical precision—ensuring that every foundation laid and every beam designed meets the 
-            highest standards of safety and efficiency. Whether in the lab conducting CBR tests or on-site 
-            supervising structural casting, my mission is to build infrastructure that endures.
-        </p>
-        <a href="mailto:mohamed.mohamed.2003@gmail.com" class="btn">Let's Collaborate</a>
-    </div>
-
     <div class="container">
+        <section class="about-card">
+            <h2>Engineering Vision</h2>
+            <p>
+                As a Civil Engineer focused on <strong>geotechnical performance and structural integrity</strong>, 
+                I bridge the gap between complex soil analysis and practical field execution. My approach is rooted 
+                in analytical precision—ensuring that every foundation laid and every beam designed meets the 
+                highest standards of safety and efficiency.
+            </p>
+        </section>
+
         <h2>Core Expertise</h2>
         <div class="grid">
             <div class="card">
-                <img src="soil.jpg" alt="Geotechnical" class="card-img">
+                <img src="expertise1.jpg" alt="Geotechnical Work" class="card-img">
                 <div class="card-content">
                     <h3>Geotechnical Engineering</h3>
-                    <p>Expertise in CBR testing, soil classification, and foundation assessment to ensure ground stability.</p>
+                    <p>Soil classification, CBR testing, and foundation assessment for structural stability.</p>
                 </div>
             </div>
-
             <div class="card">
-                <img src="design.jpg" alt="Structural Design" class="card-img">
+                <div class="card-img" style="background: #2c3e50; color: white; display: flex; align-items: center; justify-content: center;">[Structural Design Placeholder]</div>
                 <div class="card-content">
                     <h3>Structural Design</h3>
-                    <p>Advanced modeling of beams, columns, and slabs using Civil 3D and AutoCAD with manual verification.</p>
+                    <p>Designing reinforced concrete systems using Civil 3D and AutoCAD with manual verification.</p>
                 </div>
             </div>
         </div>
@@ -138,25 +103,17 @@
         <h2 style="margin-top: 50px;">Selected Projects</h2>
         <div class="grid">
             <div class="card">
-                <img src="research.jpg" alt="Research" class="card-img">
+                <img src="project1.jpg" alt="Research Project" class="card-img">
                 <div class="card-content">
                     <h3>Geotechnical Research Study</h3>
-                    <p>In-depth compaction analysis and site suitability evaluation for high-load foundations.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="site.jpg" alt="Construction" class="card-img">
-                <div class="card-content">
-                    <h3>Field Supervision</h3>
-                    <p>Direct oversight of reinforcement inspection and quality assurance during concrete casting operations.</p>
+                    <p>Compaction analysis and site suitability evaluation for high-load foundations.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer style="text-align: center; padding: 50px; color: #888;">
-        © 2026 Mohamed Mahmoud Ahmed
+    <footer style="text-align: center; padding: 60px; color: #888;">
+        © 2026 Mohamed Mahmoud Ahmed | <a href="mailto:mohamed.mohamed.2003@gmail.com" style="color: var(--navy);">Contact</a>
     </footer>
 
 </body>
