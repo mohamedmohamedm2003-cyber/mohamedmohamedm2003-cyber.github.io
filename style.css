@@ -42,3 +42,61 @@ nav a {
 nav a:hover {
   color: #38bdf8;
 }
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+}
+
+.hero-left {
+  max-width: 500px;
+}
+
+.hero-left h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero-left h2 {
+  font-size: 22px;
+  color: #38bdf8;
+  margin-bottom: 20px;
+}
+
+.hero-left p {
+  margin-bottom: 25px;
+}
+
+.hero-right img {
+  width: 320px;
+  border-radius: 15px;
+}
+
+.button {
+  padding: 12px 25px;
+  background: #38bdf8;
+  color: #0f172a;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+section {
+  padding: 120px 80px;
+}
+
+section h2 {
+  color: #38bdf8;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
