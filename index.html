@@ -1,213 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Mahmoud Ahmed | Civil Engineer</title>
+    <title>Mohamed Mahmoud Ahmed</title>
     <style>
-        :root {
-            --primary: #1a2a6c; /* Deep Navy */
-            --secondary: #b21f1f; /* Structural Red */
-            --accent: #fdbb2d; /* Construction Gold */
-            --text: #2d3436;
-            --light-bg: #f4f7f6;
-        }
-
+        /* This ensures the background isn't white-on-white */
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--light-bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #2c3e50 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-            animation: fadeIn 1s ease-in;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 30px;
-        }
-
-        /* --- Buttons --- */
-        .btn-container {
-            margin-top: 20px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent);
+            background-color: #f0f2f5; 
             color: #1a2a6c;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-family: sans-serif;
+            margin: 0;
+            padding: 20px;
         }
-
-        .button:hover {
-            transform: translateY(-3px);
-            background: white;
+        .header {
+            background: #1a2a6c;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
         }
-
-        /* --- Layout Containers --- */
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 800px;
+            margin: 20px auto;
         }
-
-        h2 {
-            color: var(--primary);
-            border-left: 5px solid var(--secondary);
-            padding-left: 15px;
-            margin-top: 40px;
-        }
-
-        /* --- Grid & Cards --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
         .card {
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-bottom: 4px solid #ddd;
-            transition: 0.3s;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #fdbb2d;
         }
-
-        .card:hover {
-            border-bottom-color: var(--secondary);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        /* --- Contact Section --- */
-        .contact-info {
-            background: var(--primary);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .contact-info a {
-            color: var(--accent);
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #fdbb2d;
+            color: #1a2a6c;
             text-decoration: none;
             font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            color: #777;
-        }
-
-        /* Simple Fade Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
+    <div class="header">
         <h1>Mohamed Mahmoud Ahmed</h1>
-        <p>Civil Engineer | Geotechnical Researcher | Structural Systems</p>
-        <div class="btn-container">
-            <a href="mailto:mohamed.mohamed.2003@gmail.com" class="button">Let's Work Together</a>
-            <a href="cv.pdf" class="button" style="margin-left:15px; background: rgba(255,255,255,0.2); color: white;">Download CV</a>
-        </div>
-    </header>
-
-    <div class="container">
-        <section id="about">
-            <h2>About Me</h2>
-            <p style="font-size: 1.1rem; max-width: 800px;">
-                Civil Engineer focused on geotechnical performance and structural integrity. 
-                Experienced in soil investigation, reinforced concrete systems, and construction site execution. 
-                I approach engineering with analytical precision and practical field awareness —
-                designing infrastructure that is safe, efficient, and built to last.
-            </p>
-        </section>
-
-        <section id="expertise">
-            <h2>Core Expertise</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Geotechnical Engineering</h3>
-                    <p>CBR testing, soil classification, compaction control, and foundation assessment.</p>
-                </div>
-                <div class="card">
-                    <h3>Structural Design</h3>
-                    <p>Beam, column, slab, Civil 3D, and AutoCAD.</p>
-                </div>
-                <div class="card">
-                    <h3>Construction Supervision</h3>
-                    <p>On-site execution, reinforcement inspection, formwork checks, and quality assurance.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Selected Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Geotechnical Research Study</h3>
-                    <p>Performed soil testing and compaction analysis for foundation suitability evaluation.</p>
-                </div>
-                <div class="card">
-                    <h3>Reinforced Concrete Structure Design</h3>
-                    <p>Designed and analyzed reinforced concrete systems with manual verification.</p>
-                </div>
-                <div class="card">
-                    <h3>Construction Site Participation</h3>
-                    <p>Participated in structural casting operations and field supervision.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact</h2>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:mohamed.mohamed.2003@gmail.com">mohamed.mohamed.2003@gmail.com</a></p>
-                <p>LinkedIn: <a href="#">View Profile</a></p>
-            </div>
-        </section>
+        <p>Civil Engineer | Geotechnical Researcher</p>
+        <a href="mailto:mohamed.mohamed.2003@gmail.com" class="button">Contact Me</a>
     </div>
 
-    <footer>
-        © 2026 Mohamed Mahmoud Ahmed | Civil Engineer
-    </footer>
+    <div class="container">
+        <h2>Core Expertise</h2>
+        <div class="card">
+            <h3>Geotechnical Engineering</h3>
+            <p>CBR testing, soil classification, and foundation assessment.</p>
+        </div>
+
+        <div class="card">
+            <h3>Structural Design</h3>
+            <p>Beam, column, slab, Civil 3D, and AutoCAD.</p>
+        </div>
+
+        <h2>Projects</h2>
+        <div class="card">
+            <h3>Geotechnical Research</h3>
+            <p>Soil testing and compaction analysis for foundation suitability.</p>
+        </div>
+    </div>
 
 </body>
 </html>
