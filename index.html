@@ -1,164 +1,102 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mohamed Mahmoud Ahmed | Civil Engineer</title>
-
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #0a192f;
-    color: #ccd6f6;
-    line-height: 1.7;
-}
+    :root {
+        --primary: #2c3e50; /* Deep Engineering Blue */
+        --accent: #e67e22;  /* Construction Orange/Gold */
+        --bg: #f4f7f6;
+        --text: #333;
+    }
 
-header {
-    text-align: center;
-    padding: 120px 20px 80px 20px;
-    background: linear-gradient(to bottom, #0a192f, #112240);
-}
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: auto;
+    }
 
-header img {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    border: 4px solid #64ffda;
-    margin-bottom: 20px;
-}
+    /* --- Animations --- */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-h1 {
-    font-size: 44px;
-    margin-bottom: 10px;
-    color: #ffffff;
-}
+    section {
+        margin-bottom: 50px;
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
 
-h2 {
-    color: #64ffda;
-    margin-bottom: 30px;
-    font-size: 28px;
-}
+    /* --- Typography --- */
+    h1 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        border-left: 5px solid var(--accent);
+        padding-left: 15px;
+    }
 
-section {
-    padding: 80px 20px;
-    max-width: 1000px;
-    margin: auto;
-}
+    h2 {
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 10px;
+    }
 
-.card {
-    background-color: #112240;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    /* --- Buttons --- */
+    .button {
+        display: inline-block;
+        padding: 12px 25px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-}
+    .button:hover {
+        background: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
 
-.button {
-    display: inline-block;
-    margin-top: 25px;
-    padding: 12px 25px;
-    background-color: #64ffda;
-    color: #0a192f;
-    border-radius: 6px;
-    font-weight: bold;
-    text-decoration: none;
-}
+    /* --- Cards Grid --- */
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin-top: 20px;
+    }
 
-.button:hover {
-    opacity: 0.85;
-}
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        border-bottom: 4px solid var(--primary);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    background-color: #020c1b;
-    font-size: 14px;
-    color: #8892b0;
-}
+    .card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        background: #fff;
+    }
 
-a {
-    color: #64ffda;
-    text-decoration: none;
-}
+    .card h3 {
+        margin-top: 0;
+        color: var(--primary);
+    }
+
+    /* --- Footer --- */
+    footer {
+        text-align: center;
+        font-size: 0.9rem;
+        margin-top: 100px;
+        color: #777;
+    }
 </style>
-</head>
-
-<body>
-
-<header>
-    <!-- Make sure you uploaded profile.jpg to the repo -->
-    <img src="profile.jpg" alt="Mohamed Mahmoud Ahmed">
-
-    <h1>Mohamed Mahmoud Ahmed</h1>
-    <p>Civil Engineer | Geotechnical Researcher | Structural Systems</p>
-
-    <a href="#contact" class="button">Let's Work Together</a>
-    <a href="cv.pdf" class="button" style="margin-left:15px;">Download CV</a>
-</header>
-
-<section>
-    <h2>About Me</h2>
-    <p>
-        Civil Engineer focused on geotechnical performance and structural integrity. 
-        Experienced in soil investigation, reinforced concrete systems, and construction site execution. 
-        I approach engineering with analytical precision and practical field awareness —
-        designing infrastructure that is safe, efficient, and built to last.
-    </p>
-</section>
-
-<section>
-    <h2>Core Expertise</h2>
-
-    <div class="card">
-        <h3>Geotechnical Engineering</h3>
-        <p>CBR testing, soil classification, compaction control, and foundation assessment.</p>
-    </div>
-
-    <div class="card">
-        <h3>Structural Design</h3>
-        <p>Beam, column, slab, Civil 3D, and AutoCAD.</p>
-    </div>
-
-    <div class="card">
-        <h3>Construction Supervision</h3>
-        <p>On-site execution, reinforcement inspection, formwork checks, and quality assurance.</p>
-    </div>
-</section>
-
-<section>
-    <h2>Selected Projects</h2>
-
-    <div class="card">
-        <h3>Geotechnical Research Study</h3>
-        <p>Performed soil testing and compaction analysis for foundation suitability evaluation.</p>
-    </div>
-
-    <div class="card">
-        <h3>Reinforced Concrete Structure Design</h3>
-        <p>Designed and analyzed reinforced concrete systems with manual verification.</p>
-    </div>
-
-    <div class="card">
-        <h3>Construction Site Participation</h3>
-        <p>Participated in structural casting operations, and field supervision.</p>
-    </div>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-    <p><strong>Email:</strong> mohamed.mohamed.2003@gmail.com</p>
-    <p><strong>LinkedIn:</strong> <a href="www.linkedin.com/in/mohamed-mahmoud-geo">View Profile</a></p>
-</section>
-
-<footer>
-    © 2026 Mohamed Mahmoud Ahmed | Civil Engineer
-</footer>
-
-</body>
-</html>
