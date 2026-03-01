@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Mahmoud Ahmed</title>
+    <title>Mohamed Mahmoud Ahmed | Portfolio</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; }
         
-        /* --- NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 50px; background: #f8f8f8; border-bottom: 1px solid #ddd;
@@ -16,46 +15,48 @@
         .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
         .nav-links a { text-decoration: none; color: #555; margin-left: 25px; cursor: pointer; }
 
-        /* --- PAGES --- */
         .page { display: none; min-height: 100vh; width: 100%; }
         .active-page { display: block; }
 
-        /* --- THE HERO (HOME) --- */
-        #home {
+        /* THE HERO SECTION */
+        .hero {
             position: relative;
             height: 100vh;
             width: 100%;
-            background: #222; /* Dark fallback if image fails */
+            background-color: #1a1a1a; /* Dark fallback */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
         }
 
         .hero-img {
             position: absolute;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            object-fit: cover; /* Makes image fill screen */
-            opacity: 0.6; /* Darkens image so text is readable */
-            z-index: 1;
+            object-fit: cover;
+            opacity: 0.5; /* Makes text readable */
         }
 
         .hero-text {
             position: relative;
-            z-index: 2; /* Sits on top of image */
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; height: 100%; text-align: center; color: white;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 20px;
         }
 
-        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; }
-        .hero-text h1 span { border-bottom: 3.5px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
+        .hero-text h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; line-height: 1.4; }
+        .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
 
-        /* --- OTHER PAGES --- */
         .container { max-width: 900px; margin: auto; padding: 120px 20px; }
-        .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; }
+        .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; border-left: 5px solid #1a2a6c; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil & Geotechnical Engineering</div>
+        <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil Engineering</div>
         <div class="nav-links">
             <a onclick="showPage('home')">Home</a>
             <a onclick="showPage('expertise')">Expertise</a>
@@ -64,7 +65,8 @@
     </nav>
 
     <div id="home" class="page active-page">
-        <img src="hero-bg.jpg" alt="BACKGROUND IMAGE ERROR" class="hero-img">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1920&q=80" 
+             alt="Image Loading..." class="hero-img">
         
         <div class="hero-text">
             <h1>
@@ -79,8 +81,8 @@
         <div class="container">
             <h2>Engineering Expertise</h2>
             <div class="card">
-                <h3>Geotechnical Analysis</h3>
-                <p>CBR testing and soil classification specialist.</p>
+                <h3>Geotechnical & Structural</h3>
+                <p>CBR testing, soil compaction, and reinforced concrete design.</p>
             </div>
         </div>
     </div>
@@ -90,7 +92,7 @@
             <h2>Selected Projects</h2>
             <div class="card">
                 <h3>Foundation Research</h3>
-                <p>Structural integrity and soil compaction project.</p>
+                <p>Site suitability and soil stability analysis.</p>
             </div>
         </div>
     </div>
