@@ -1,109 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Mahmoud Ahmed | Portfolio</title>
+    <title>Mohamed Portfolio Test</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', sans-serif; }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: sans-serif; }
         
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 50px; background: #f8f8f8; border-bottom: 1px solid #ddd;
-            position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
-        }
-        .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
-        .nav-links a { text-decoration: none; color: #555; margin-left: 25px; cursor: pointer; }
+        /* This bar ensures we can see if the page loaded at all */
+        .debug-bar { background: red; color: white; padding: 10px; text-align: center; position: fixed; width: 100%; z-index: 1000; }
 
-        .page { display: none; min-height: 100vh; width: 100%; }
-        .active-page { display: block; }
-
-        /* THE HERO SECTION */
         .hero {
             position: relative;
-            height: 100vh;
             width: 100%;
-            background-color: #1a1a1a; /* Dark fallback */
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            background-color: #333; /* If image fails, you see dark grey */
         }
 
-        .hero-img {
+        .main-photo {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            opacity: 0.5; /* Makes text readable */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the screen */
+            z-index: 1;
         }
 
-        .hero-text {
+        .text-on-top {
             position: relative;
-            z-index: 10;
-            text-align: center;
+            z-index: 2;
             color: white;
+            text-align: center;
+            background: rgba(0,0,0,0.5); /* Black box to make text readable */
             padding: 20px;
         }
-
-        .hero-text h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 400; line-height: 1.4; }
-        .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
-
-        .container { max-width: 900px; margin: auto; padding: 120px 20px; }
-        .card { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-top: 20px; border-left: 5px solid #1a2a6c; }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil Engineering</div>
-        <div class="nav-links">
-            <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('expertise')">Expertise</a>
-            <a onclick="showPage('projects')">Projects</a>
-        </div>
-    </nav>
+    <div class="debug-bar">If you can see this red bar, the code is running!</div>
 
-    <div id="home" class="page active-page">
-        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1920&q=80" 
-             alt="Image Loading..." class="hero-img">
-        
-        <div class="hero-text">
-            <h1>
-                <span>Civil Engineer | Geotechnical</span><br>
-                <span>Researcher | Building Foundations</span><br>
-                <span>for the Future</span>
-            </h1>
+    <div class="hero">
+        <img src="hero-bg.jpg" class="main-photo" alt="IMAGE NOT FOUND - CHECK FILENAME">
+
+        <div class="text-on-top">
+            <h1>Mohamed Mahmoud Ahmed</h1>
+            <p>Civil & Geotechnical Engineering</p>
         </div>
     </div>
 
-    <div id="expertise" class="page">
-        <div class="container">
-            <h2>Engineering Expertise</h2>
-            <div class="card">
-                <h3>Geotechnical & Structural</h3>
-                <p>CBR testing, soil compaction, and reinforced concrete design.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="projects" class="page">
-        <div class="container">
-            <h2>Selected Projects</h2>
-            <div class="card">
-                <h3>Foundation Research</h3>
-                <p>Site suitability and soil stability analysis.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showPage(pageId) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active-page'));
-            document.getElementById(pageId).classList.add('active-page');
-            window.scrollTo(0,0);
-        }
-    </script>
 </body>
 </html>
