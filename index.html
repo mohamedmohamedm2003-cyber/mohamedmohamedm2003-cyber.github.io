@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Mahmoud Ahmed | Portfolio</title>
     <style>
-        /* --- 1. THE UNLOCK --- */
+        /* --- BASE STYLES --- */
         html {
             scroll-behavior: smooth;
         }
@@ -13,10 +13,10 @@
         body {
             margin: 0;
             padding: 0;
-            /* Removed height: 100% and overflow: hidden */
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #ffffff;
             color: #333;
+            overflow-x: hidden;
         }
 
         /* --- NAVIGATION --- */
@@ -27,7 +27,7 @@
             padding: 15px 50px;
             background: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #ddd;
-            position: fixed; /* Stays at the top while you scroll */
+            position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -42,11 +42,13 @@
             margin-left: 25px;
             font-size: 0.9rem;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
-        /* --- SECTIONS --- */
+        .nav-links a:hover { color: #000; }
+
+        /* --- SECTION GENERIC STYLES --- */
         section {
-            padding: 100px 20px; /* Space for the fixed nav bar */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -54,9 +56,8 @@
             box-sizing: border-box;
         }
 
-        /* --- HOME SECTION --- */
+        /* --- SECTION 1: HOME (THE SLIDE) --- */
         #home {
-            padding: 0;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
             background-size: cover;
             background-position: center;
@@ -64,12 +65,12 @@
             text-align: center;
         }
 
-        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; margin: 0; }
         .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
 
-        /* --- SERVICES SECTION --- */
-        .container { max-width: 1100px; margin: 0 auto; }
-        .section-title { font-size: 2.5rem; margin-bottom: 50px; font-weight: 400; }
+        /* --- SECTION 2: SERVICES (THE GRID) --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; font-weight: 400; color: #1a1a1a; }
 
         .services-grid {
             display: flex;
@@ -86,14 +87,75 @@
             border: 1px solid #eee;
         }
 
-        .service-card h3 span { border-bottom: 2px solid #333; padding-bottom: 3px; }
-        .service-card p { line-height: 1.6; color: #666; margin-top: 15px; }
+        .service-card h3 { font-weight: 500; margin-bottom: 15px; }
+        .service-card h3 span { border-bottom: 2.5px solid #333; padding-bottom: 3px; display: inline-block; }
+        .service-card p { line-height: 1.6; color: #555; font-size: 0.95rem; }
 
-        /* Mobile Fix */
-        @media (max-width: 768px) {
+        /* --- SECTION 3: ABOUT ME (THE SPLIT LAYOUT) --- */
+        #about {
+            background-color: #f4f4f4;
+            padding: 0;
+        }
+
+        .about-wrapper {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+            align-items: stretch;
+        }
+
+        .about-image {
+            flex: 1;
+            min-height: 500px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-content {
+            flex: 1;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+
+        .about-content h2 { font-size: 3rem; margin-bottom: 25px; font-weight: 500; }
+        .about-content p { font-size: 1.05rem; line-height: 1.7; color: #444; margin-bottom: 20px; max-width: 550px; }
+
+        .cv-button {
+            display: inline-block;
+            background-color: #222;
+            color: white;
+            padding: 14px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            width: fit-content;
+            transition: 0.3s;
+        }
+
+        .cv-button:hover { background-color: #000; transform: translateY(-2px); }
+
+        /* --- SECTION 4: CONTACT --- */
+        #contact { background-color: #ffffff; text-align: center; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 900px) {
+            .about-wrapper { flex-direction: column; }
             .services-grid { flex-direction: column; }
             nav { padding: 15px 20px; }
             .hero-text h1 { font-size: 2.2rem; }
+            .about-content { padding: 60px 30px; }
         }
     </style>
 </head>
@@ -104,6 +166,7 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
+            <a href="#about">About Me</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -123,28 +186,47 @@
             <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="site.jpg" alt="Construction" class="service-img">
+                    <img src="site.jpg" alt="Construction Site" class="service-img">
                     <h3><span>Construction Site Experience</span></h3>
                     <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
                 </div>
                 <div class="service-card">
-                    <img src="lab.jpg" alt="Lab" class="service-img">
+                    <img src="lab.jpg" alt="Geotechnical Research" class="service-img">
                     <h3><span>Geotechnical Research</span></h3>
-                    <p>Supervised and participated in soil analysis, laboratory testing, and site investigation.</p>
+                    <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
                 </div>
                 <div class="service-card">
-                    <img src="design.jpg" alt="Design" class="service-img">
+                    <img src="design.jpg" alt="Structural Design" class="service-img">
                     <h3><span>Structural Design & Analysis</span></h3>
-                    <p>Skilled in Civil 3D and AutoCAD for detailed structural planning and analysis.</p>
+                    <p>Skilled in Civil 3D, and AutoCAD for structural planning and analysis.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="background-color: #f4f4f4;">
+    <section id="about">
+        <div class="about-wrapper">
+            <div class="about-image">
+                <img src="portrait.jpg" alt="Mohamed Mahmoud Ahmed">
+            </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>I am Mohamed Mahmoud Ahmed, a civil engineer with a focus on geotechnical research and construction projects. Originally from Sudan, I am currently based in Indonesia, where I completed my final research on soil improvement and the effect of curing time on CBR values using Bacillus Tropicus.</p>
+                
+                <p>I have hands-on experience supervising and participating in bored pile, column, beam, and slab construction, as well as conducting laboratory soil tests and structural analyses.</p>
+                
+                <p>Passionate about infrastructure development and ground engineering, I aim to contribute to projects that are safe, sustainable, and technically sound.</p>
+                
+                <a href="your-cv.pdf" class="cv-button" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
         <div class="container">
             <h2 class="section-title">Contact</h2>
             <p>Email: mohamed.mohamed.2003@gmail.com</p>
+            <p>Based in Indonesia | Open to Global Opportunities</p>
         </div>
     </section>
 
