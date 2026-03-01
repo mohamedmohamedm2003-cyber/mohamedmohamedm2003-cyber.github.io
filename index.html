@@ -5,77 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Mahmoud Ahmed | Portfolio</title>
     <style>
-        /* --- BASE STYLES --- */
-        body, html {
-            margin: 0; padding: 0;
+        /* --- 1. THE UNLOCK --- */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            /* Removed height: 100% and overflow: hidden */
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: #ffffff;
-            /* This makes the transition smooth when clicking nav buttons */
-            scroll-behavior: smooth; 
+            color: #333;
         }
 
         /* --- NAVIGATION --- */
         nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 50px; background: rgba(248, 248, 248, 0.95); 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: rgba(255, 255, 255, 0.95);
             border-bottom: 1px solid #ddd;
-            position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
-        }
-        .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
-        .nav-links a { 
-            text-decoration: none; color: #555; margin-left: 25px; 
-            font-size: 0.9rem; cursor: pointer; font-weight: 500; 
-        }
-        .nav-links a:hover { color: #000; }
-
-        /* --- SECTION STYLING --- */
-        section {
-            min-height: 100vh; /* Each section takes full screen height */
+            position: fixed; /* Stays at the top while you scroll */
             width: 100%;
-            position: relative;
-            overflow: hidden;
+            top: 0;
+            z-index: 1000;
+            box-sizing: border-box;
         }
 
-        /* --- HOME SECTION (The Slide) --- */
+        .nav-logo { font-size: 1.1rem; font-weight: 600; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            padding: 100px 20px; /* Space for the fixed nav bar */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+
+        /* --- HOME SECTION --- */
         #home {
+            padding: 0;
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: white;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
         }
-        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; }
-        .hero-text h1 span { border-bottom: 3.5px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
 
-        /* --- SERVICES SECTION (The Grid) --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-        .section-title { font-size: 2.5rem; margin-bottom: 40px; color: #333; font-weight: 400; }
-        
+        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; }
+        .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
+
+        /* --- SERVICES SECTION --- */
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { font-size: 2.5rem; margin-bottom: 50px; font-weight: 400; }
+
         .services-grid {
-            display: flex; justify-content: space-between; gap: 40px;
+            display: flex;
+            gap: 40px;
         }
-        .service-card { flex: 1; text-align: left; }
+
+        .service-card { flex: 1; }
+
         .service-img {
-            width: 100%; aspect-ratio: 1 / 1; 
-            object-fit: cover; margin-bottom: 20px;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            margin-bottom: 20px;
             border: 1px solid #eee;
         }
-        .service-card h3 span {
-            border-bottom: 2.5px solid #333;
-            padding-bottom: 3px; font-size: 1.25rem; display: inline-block;
-        }
-        .service-card p { font-size: 1rem; color: #555; line-height: 1.6; margin-top: 20px; }
 
-        /* Responsive */
+        .service-card h3 span { border-bottom: 2px solid #333; padding-bottom: 3px; }
+        .service-card p { line-height: 1.6; color: #666; margin-top: 15px; }
+
+        /* Mobile Fix */
         @media (max-width: 768px) {
             .services-grid { flex-direction: column; }
-            .hero-text h1 { font-size: 2rem; }
+            nav { padding: 15px 20px; }
+            .hero-text h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil Engineering</div>
+        <div class="nav-logo">Mohamed Mahmoud Ahmed</div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#services">Services</a>
@@ -95,32 +120,31 @@
 
     <section id="services">
         <div class="container">
-            <h1 class="section-title">Our Services</h1>
+            <h2 class="section-title">Our Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="site.jpg" alt="Site" class="service-img">
+                    <img src="site.jpg" alt="Construction" class="service-img">
                     <h3><span>Construction Site Experience</span></h3>
                     <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
                 </div>
                 <div class="service-card">
                     <img src="lab.jpg" alt="Lab" class="service-img">
                     <h3><span>Geotechnical Research</span></h3>
-                    <p>Focusing on soil mechanics and foundation integrity testing.</p>
+                    <p>Supervised and participated in soil analysis, laboratory testing, and site investigation.</p>
                 </div>
                 <div class="service-card">
                     <img src="design.jpg" alt="Design" class="service-img">
                     <h3><span>Structural Design & Analysis</span></h3>
-                    <p>Skilled in Civil 3D and AutoCAD for structural planning.</p>
+                    <p>Skilled in Civil 3D and AutoCAD for detailed structural planning and analysis.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" style="background: #f9f9f9;">
+    <section id="contact" style="background-color: #f4f4f4;">
         <div class="container">
-            <h1 class="section-title">Contact</h1>
+            <h2 class="section-title">Contact</h2>
             <p>Email: mohamed.mohamed.2003@gmail.com</p>
-            <p>Location: [Your City/University]</p>
         </div>
     </section>
 
