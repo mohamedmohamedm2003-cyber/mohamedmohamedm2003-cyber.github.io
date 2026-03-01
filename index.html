@@ -1,55 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mohamed Portfolio Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Mahmoud Ahmed | Civil Engineer</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: sans-serif; }
+        /* --- BASE STYLES --- */
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f6; scroll-behavior: smooth;
+        }
+
+        /* --- NAVIGATION (Matches your Reference Image) --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 50px; background: #f8f8f8; border-bottom: 1px solid #ddd;
+            position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
+        }
+        .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
+        .nav-links a { text-decoration: none; color: #555; margin-left: 25px; font-size: 0.9rem; cursor: pointer; font-weight: 500; }
+        .nav-links a:hover { color: #000; }
+
+        /* --- PAGE DISPLAY LOGIC --- */
+        .page { display: none; min-height: 100vh; width: 100%; }
+        .active-page { display: block; }
+
+        /* --- HOME PAGE (The "Slide" with Underlines) --- */
+        #home {
+            background-color: #1a2a6c; /* Fallback Color if Image fails */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white;
+        }
+        .hero-text h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 400; line-height: 1.4; margin: 0; }
+        .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
+
+        /* --- CONTENT PAGES (Expertise, Projects, Skills) --- */
+        .container { max-width: 1000px; margin: 0 auto; padding: 120px 20px 60px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 6px solid #1a2a6c; }
+        h2 { color: #1a2a6c; border-bottom: 2px solid #fdbb2d; display: inline-block; padding-bottom: 5px; }
         
-        /* This bar ensures we can see if the page loaded at all */
-        .debug-bar { background: red; color: white; padding: 10px; text-align: center; position: fixed; width: 100%; z-index: 1000; }
-
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #333; /* If image fails, you see dark grey */
-        }
-
-        .main-photo {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Fill the screen */
-            z-index: 1;
-        }
-
-        .text-on-top {
-            position: relative;
-            z-index: 2;
-            color: white;
-            text-align: center;
-            background: rgba(0,0,0,0.5); /* Black box to make text readable */
-            padding: 20px;
-        }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #1a2a6c; color: white; }
     </style>
 </head>
 <body>
 
-    <div class="debug-bar">If you can see this red bar, the code is running!</div>
+    <nav>
+        <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil & Geotechnical Engineering</div>
+        <div class="nav-links">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('expertise')">Expertise</a>
+            <a onclick="showPage('projects')">Projects</a>
+            <a onclick="showPage('skills')">Skills</a>
+        </div>
+    </nav>
 
-    <div class="hero">
-        <img src="hero-bg.jpg" class="main-photo" alt="IMAGE NOT FOUND - CHECK FILENAME">
-
-        <div class="text-on-top">
-            <h1>Mohamed Mahmoud Ahmed</h1>
-            <p>Civil & Geotechnical Engineering</p>
+    <div id="home" class="page active-page">
+        <div class="hero-text">
+            <h1>
+                <span>Civil Engineer | Geotechnical</span><br>
+                <span>Researcher | Building Foundations</span><br>
+                <span>for the Future</span>
+            </h1>
         </div>
     </div>
 
+    <div id="expertise" class="page">
+        <div class="container">
+            <h2>Core Expertise</h2>
+            <div class="card">
+                <h3>Geotechnical Laboratory Testing</h3>
+                <p>Advanced proficiency in CBR (California Bearing Ratio), Sieve Analysis, Proctor Compaction, and Atterberg Limits.</p>
+            </div>
+            <div class="card">
+                <h3>Structural Systems</h3>
+                <p>Design and analysis of reinforced concrete elements (beams, slabs, columns) using AutoCAD and Civil 3D.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="page">
+        <div class="container">
+            <h2>Selected Projects</h2>
+            <div class="card">
+                <h3>Soil Compaction Research</h3>
+                <p>Comprehensive site suitability evaluation and foundation stability analysis for industrial projects.</p>
+            </div>
+            <div class="card">
+                <h3>Structural Site Supervision</h3>
+                <p>Quality control during concrete casting and reinforcement inspection to ensure compliance with design specs.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="skills" class="page">
+        <div class="container">
+            <h2>Technical Proficiencies</h2>
+            <div class="card">
+                <table>
+                    <tr><th>Software</th><th>Proficiency</th></tr>
+                    <tr><td>AutoCAD</td><td>Advanced</td></tr>
+                    <tr><td>Civil 3D</td><td>Intermediate</td></tr>
+                    <tr><td>MS Excel</td><td>Data Analysis</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.remove('active-page'));
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Force scroll to top
+            window.scrollTo(0,0);
+        }
+    </script>
 </body>
 </html>
