@@ -9,43 +9,65 @@
         body, html {
             margin: 0; padding: 0; height: 100%;
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7f6; scroll-behavior: smooth;
+            background-color: #ffffff; scroll-behavior: smooth;
         }
 
-        /* --- NAVIGATION (Matches your Reference Image) --- */
+        /* --- NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 50px; background: #f8f8f8; border-bottom: 1px solid #ddd;
             position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
         }
         .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
-        .nav-links a { text-decoration: none; color: #555; margin-left: 25px; font-size: 0.9rem; cursor: pointer; font-weight: 500; }
+        .nav-links a { 
+            text-decoration: none; color: #555; margin-left: 25px; 
+            font-size: 0.9rem; cursor: pointer; font-weight: 500; 
+        }
         .nav-links a:hover { color: #000; }
 
         /* --- PAGE DISPLAY LOGIC --- */
         .page { display: none; min-height: 100vh; width: 100%; }
         .active-page { display: block; }
 
-        /* --- HOME PAGE (The "Slide" with Underlines) --- */
+        /* --- HOME PAGE (The "Slide" from your Image) --- */
         #home {
-            background-color: #1a2a6c; /* Fallback Color if Image fails */
-            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('hero-bg.jpg');
+            background-size: cover; background-position: center;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: white;
         }
-        .hero-text h1 { font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 400; line-height: 1.4; margin: 0; }
-        .hero-text h1 span { border-bottom: 4px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; margin: 0; }
+        .hero-text h1 span { border-bottom: 3.5px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
 
-        /* --- CONTENT PAGES (Expertise, Projects, Skills) --- */
-        .container { max-width: 1000px; margin: 0 auto; padding: 120px 20px 60px; }
-        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 6px solid #1a2a6c; }
-        h2 { color: #1a2a6c; border-bottom: 2px solid #fdbb2d; display: inline-block; padding-bottom: 5px; }
+        /* --- SERVICES PAGE (The Grid from your Image) --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 120px 20px 60px; }
+        .section-title { font-size: 2.5rem; margin-bottom: 40px; color: #333; font-weight: 400; }
         
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: #1a2a6c; color: white; }
+        .services-grid {
+            display: flex; justify-content: space-between; gap: 40px;
+        }
+        .service-card { flex: 1; text-align: left; }
+        
+        .service-img {
+            width: 100%; aspect-ratio: 1 / 1; 
+            object-fit: cover; margin-bottom: 20px;
+            background-color: #eee; /* Placeholder if image is missing */
+        }
+        
+        .service-card h3 span {
+            border-bottom: 2.5px solid #333;
+            padding-bottom: 3px; font-size: 1.25rem; display: inline-block;
+        }
+        .service-card p {
+            font-size: 1rem; color: #555; line-height: 1.6; margin-top: 20px;
+        }
+
+        /* Responsive stack for mobile */
+        @media (max-width: 768px) {
+            .services-grid { flex-direction: column; }
+            nav { padding: 15px 20px; }
+            .hero-text h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
@@ -54,9 +76,8 @@
         <div class="nav-logo">Mohamed Mahmoud Ahmed | Civil & Geotechnical Engineering</div>
         <div class="nav-links">
             <a onclick="showPage('home')">Home</a>
-            <a onclick="showPage('expertise')">Expertise</a>
-            <a onclick="showPage('projects')">Projects</a>
-            <a onclick="showPage('skills')">Skills</a>
+            <a onclick="showPage('services')">Services</a>
+            <a onclick="showPage('contact')">Contact</a>
         </div>
     </nav>
 
@@ -70,58 +91,38 @@
         </div>
     </div>
 
-
-    <div id="expertise" class="page">
-    <div class="container">
-        <h2 class="section-title">Our Services</h2>
-        
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="site.jpg" alt="Construction Site" class="service-img">
-                <h3><span>Construction Site Experience</span></h3>
-                <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
-            </div>
-
-            <div class="service-card">
-                <img src="lab.jpg" alt="Geotechnical Research" class="service-img">
-                <h3><span>Geotechnical Research</span></h3>
-                <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
-            </div>
-
-            <div class="service-card">
-                <img src="design.jpg" alt="Structural Design" class="service-img">
-                <h3><span>Structural Design & Analysis</span></h3>
-                <p>Skilled in Civil 3D, and AutoCAD for structural planning and analysis.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-    <div id="projects" class="page">
+    <div id="services" class="page">
         <div class="container">
-            <h2>Selected Projects</h2>
-            <div class="card">
-                <h3>Soil Compaction Research</h3>
-                <p>Comprehensive site suitability evaluation and foundation stability analysis for industrial projects.</p>
-            </div>
-            <div class="card">
-                <h3>Structural Site Supervision</h3>
-                <p>Quality control during concrete casting and reinforcement inspection to ensure compliance with design specs.</p>
+            <h1 class="section-title">Our Services</h1>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="site.jpg" alt="Construction Site" class="service-img">
+                    <h3><span>Construction Site Experience</span></h3>
+                    <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
+                </div>
+
+                <div class="service-card">
+                    <img src="lab.jpg" alt="Geotechnical Research" class="service-img">
+                    <h3><span>Geotechnical Research</span></h3>
+                    <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
+                </div>
+
+                <div class="service-card">
+                    <div style="position: relative;">
+                         <img src="design.jpg" alt="Structural Design" class="service-img">
+                    </div>
+                    <h3><span>Structural Design & Analysis</span></h3>
+                    <p>Skilled in Civil 3D, and AutoCAD for structural planning and analysis.</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="skills" class="page">
+    <div id="contact" class="page">
         <div class="container">
-            <h2>Technical Proficiencies</h2>
-            <div class="card">
-                <table>
-                    <tr><th>Software</th><th>Proficiency</th></tr>
-                    <tr><td>AutoCAD</td><td>Advanced</td></tr>
-                    <tr><td>Civil 3D</td><td>Intermediate</td></tr>
-                    <tr><td>MS Excel</td><td>Data Analysis</td></tr>
-                </table>
-            </div>
+            <h1 class="section-title">Contact</h1>
+            <p>Email: mohamed.mohamed.2003@gmail.com</p>
         </div>
     </div>
 
@@ -129,14 +130,18 @@
         function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.remove('active-page'));
+            pages.forEach(p => p.style.display = 'none');
             
-            // Show selected page
-            document.getElementById(pageId).classList.add('active-page');
+            // Show the selected one
+            const selected = document.getElementById(pageId);
+            if(selected) {
+                selected.style.display = 'block';
+            }
             
-            // Force scroll to top
+            // Scroll to top
             window.scrollTo(0,0);
         }
     </script>
+
 </body>
 </html>
