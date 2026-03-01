@@ -5,104 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Mahmoud Ahmed | Civil Engineer</title>
     <style>
-        /* --- BASE STYLES --- */
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background-color: #f4f7f6;
-            color: #333;
-        }
-
-        /* --- NAVIGATION BAR (Reference Style) --- */
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Segoe UI', Arial, sans-serif; }
+        
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            background: #f8f8f8; 
-            border-bottom: 1px solid #ddd;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-sizing: border-box;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 50px; background: #f8f8f8; border-bottom: 1px solid #ddd;
+            position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
         }
 
-        .nav-logo {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: #333;
-        }
+        .nav-logo { font-size: 1.1rem; font-weight: 500; color: #333; }
+        .nav-links a { text-decoration: none; color: #555; margin-left: 25px; font-size: 0.9rem; cursor: pointer; }
 
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            margin-left: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover { color: #000; }
-
-        /* --- PAGE LOGIC --- */
         .page { display: none; min-height: 100vh; }
         .active-page { display: block; }
 
-        /* --- HERO SECTION (Home Page) --- */
         .hero {
             height: 100vh;
+            /* I replaced your local file with a direct internet link for this test */
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('hero-bg.jpg'); /* CHANGE THIS IF YOUR IMAGE NAME IS DIFFERENT */
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=2069&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 400;
-            line-height: 1.3;
-            margin: 0;
-        }
+        .hero h1 { font-size: 3.5rem; font-weight: 400; line-height: 1.3; margin: 0; }
+        .hero h1 span { border-bottom: 3.5px solid white; padding-bottom: 5px; display: inline-block; margin-bottom: 15px; }
 
-        .hero h1 span {
-            border-bottom: 3.5px solid white;
-            padding-bottom: 5px;
-            display: inline-block;
-            margin-bottom: 15px;
-        }
-
-        /* --- CONTENT SECTION STYLING (Internal Pages) --- */
-        .content-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 120px 20px 60px; /* Top padding to account for fixed nav */
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 30px;
-            border-left: 6px solid #1a2a6c;
-        }
-
-        h2 { color: #1a2a6c; border-bottom: 2px solid #fdbb2d; display: inline-block; }
-
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: #1a2a6c; color: white; }
-
+        .content-container { max-width: 1000px; margin: 0 auto; padding: 120px 20px 60px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border-left: 6px solid #1a2a6c; }
     </style>
 </head>
 <body>
@@ -129,63 +60,17 @@
 
     <div id="expertise" class="page">
         <div class="content-container">
-            <h2>Core Expertise</h2>
-            <div class="card">
-                <h3>Geotechnical Laboratory Testing</h3>
-                <p>Proficient in performing and analyzing CBR (California Bearing Ratio), Sieve Analysis, Proctor Compaction, and Atterberg Limits.</p>
-            </div>
-            <div class="card">
-                <h3>Structural Systems</h3>
-                <p>Design of reinforced concrete elements including foundations, beams, and slabs with AutoCAD verification.</p>
-            </div>
+            <div class="card"><h3>Core Expertise</h3><p>Content goes here...</p></div>
         </div>
     </div>
-
-    <div id="projects" class="page">
-        <div class="content-container">
-            <h2>Selected Projects</h2>
-            <div class="card">
-                <h3>Geotechnical Research Study</h3>
-                <p>Analyzed soil stability and foundation suitability for high-load industrial infrastructure.</p>
-            </div>
-            <div class="card">
-                <h3>Structural Casting Supervision</h3>
-                <p>Managed on-site quality control for large-scale concrete casting operations.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="skills" class="page">
-        <div class="content-container">
-            <h2>Technical Skills</h2>
-            <div class="card">
-                <table>
-                    <tr><th>Software</th><th>Proficiency</th></tr>
-                    <tr><td>AutoCAD</td><td>Advanced</td></tr>
-                    <tr><td>Civil 3D</td><td>Intermediate</td></tr>
-                    <tr><td>MS Excel</td><td>Data Analysis</td></tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <footer style="text-align: center; padding: 20px; color: #888;">
-        © 2026 Mohamed Mahmoud Ahmed
-    </footer>
 
     <script>
         function showPage(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active-page'));
-            
-            // Show the selected page
             document.getElementById(pageId).classList.add('active-page');
-            
-            // Scroll to top
             window.scrollTo(0,0);
         }
     </script>
-
 </body>
 </html>
