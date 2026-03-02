@@ -7,112 +7,78 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- GLOBAL & SMOOTH SCROLL --- */
+        /* --- GLOBAL & NAVIGATION --- */
         html { scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Inter', sans-serif; color: #1a1a1a; line-height: 1.6; }
         
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
-
-        /* --- NAVIGATION --- */
         nav {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 80px; background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #eaeaea;
+            padding: 20px 80px; background: #fff; border-bottom: 1px solid #eee;
             position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
         }
-        .nav-logo { font-size: 1.25rem; font-weight: 700; color: #1a1a1a; text-transform: uppercase; letter-spacing: 1px; }
-        .nav-links a {
-            text-decoration: none; color: #666; margin-left: 35px;
-            font-size: 0.85rem; font-weight: 600; text-transform: uppercase;
-            transition: 0.3s ease;
-        }
-        .nav-links a:hover { color: #000; }
+        .nav-links a { text-decoration: none; color: #666; margin-left: 35px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; }
 
-        /* --- SECTION BASE --- */
+        /* --- SECTIONS --- */
         section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box; }
 
         /* --- HOME --- */
         #home {
-            padding: 0;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('hero-bg.jpg');
-            background-size: cover; background-position: center;
-            color: white; text-align: center;
+            background-size: cover; background-position: center; color: white; text-align: center;
         }
-        .hero-text h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 400; line-height: 1.2; }
-        .hero-text h1 span { border-bottom: 5px solid white; padding-bottom: 8px; display: inline-block; margin-bottom: 20px; }
+        .hero-text h1 { font-size: 3.5rem; font-weight: 400; }
+        .hero-text h1 span { border-bottom: 5px solid white; padding-bottom: 8px; }
 
-        /* --- SERVICES --- */
-        #services { padding: 120px 80px; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-title { font-size: 2.8rem; margin-bottom: 60px; font-weight: 600; }
+        /* --- SERVICES (CLICKABLE CARDS) --- */
+        #services { padding: 120px 80px; background: #fff; }
+        .services-grid { display: flex; gap: 30px; }
         
-        .services-grid { display: flex; gap: 40px; }
-        .service-card { flex: 1; transition: transform 0.4s ease; border-radius: 8px; }
-        .service-card:hover { transform: translateY(-10px); }
-        
-        .service-img { 
-            width: 100%; aspect-ratio: 1/1; object-fit: cover; 
-            margin-bottom: 25px; border-radius: 4px; border: 1px solid #eee;
+        .service-card { 
+            flex: 1; cursor: pointer; transition: 0.3s; 
+            padding: 20px; border-radius: 12px; border: 1px solid transparent;
         }
-        .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; font-weight: 600; }
-        .service-card h3 span { border-bottom: 3px solid #1a1a1a; padding-bottom: 4px; display: inline-block; }
-        .service-card p { color: #555; font-size: 1rem; }
+        .service-card:hover { 
+            background: #f9f9f9; border-color: #eee; transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .service-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 6px; margin-bottom: 20px; }
+        .service-card h3 span { border-bottom: 3px solid #1a1a1a; }
+        .click-hint { font-size: 0.75rem; color: #007bff; font-weight: 700; text-transform: uppercase; margin-top: 10px; display: block; }
 
-        /* --- ABOUT ME --- */
-        #about { background: #f4f4f4; padding: 0; }
-        .about-wrapper { display: flex; align-items: stretch; min-height: 100vh; }
-        .about-image { flex: 1; }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        /* --- MODAL (THE POPUP) --- */
+        .modal {
+            display: none; position: fixed; z-index: 2000; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px);
+            justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 1000px; max-height: 85vh;
+            border-radius: 15px; overflow-y: auto; position: relative; padding: 40px;
+        }
+        .close-modal { position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; }
         
+        .modal-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; margin-top: 20px; }
+        .modal-gallery img { width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .modal-text h2 { font-size: 2rem; margin-top: 0; }
+        .tech-list { background: #f4f4f4; padding: 20px; border-radius: 8px; list-style: none; }
+        .tech-list li { margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: center; }
+        .tech-list i { margin-right: 10px; color: #1a1a1a; }
+
+        /* --- ABOUT & FOOTER (As before) --- */
+        #about { background: #f4f4f4; }
+        .about-wrapper { display: flex; min-height: 100vh; }
+        .about-image { flex: 1; } .about-image img { width: 100%; height: 100%; object-fit: cover; }
         .about-content { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
-        .about-content h2 { font-size: 3.5rem; margin-bottom: 30px; font-weight: 500; }
-        .about-content p { font-size: 1.1rem; color: #333; margin-bottom: 20px; max-width: 550px; }
-        
-        .cv-button {
-            display: inline-block; background: #1a1a1a; color: white;
-            padding: 16px 40px; text-decoration: none; border-radius: 50px;
-            font-weight: 700; font-size: 0.9rem; width: fit-content;
-            margin-top: 25px; transition: 0.3s;
-        }
-        .cv-button:hover { background: #444; transform: translateY(-3px); }
+        .cv-button { display: inline-block; background: #1a1a1a; color: white; padding: 16px 40px; text-decoration: none; border-radius: 50px; font-weight: 700; margin-top: 25px; }
 
-        /* --- CONTACT & FOOTER --- */
-        #contact { background: #e6e6e6; padding: 100px 80px 40px 80px; }
-        .contact-upper { display: flex; justify-content: space-between; margin-bottom: 100px; }
-        .contact-cta h1 { font-size: 4.5rem; margin: 0; letter-spacing: -2px; }
-        .contact-cta p { font-size: 1.25rem; color: #444; max-width: 450px; margin-top: 20px; }
-        
-        .contact-box { width: 450px; }
-        .contact-box label { display: block; margin-bottom: 10px; font-size: 0.9rem; font-weight: 600; }
-        .email-field { 
-            background: transparent; border: 1px solid #aaa; 
-            padding: 15px; width: 100%; font-size: 1rem; margin-bottom: 25px; box-sizing: border-box;
-        }
-        .contact-link { 
-            display: inline-block; background: #1a1a1a; color: white; 
-            padding: 15px 45px; text-decoration: none; border-radius: 30px; 
-            font-weight: 600; transition: background 0.3s;
-        }
-        .contact-link:hover { background: #000; }
+        #contact { background: #e6e6e6; padding: 100px 80px 40px; }
+        footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #ccc; padding-top: 40px; margin-top: 80px;}
 
-        footer { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid #ccc; padding-top: 40px; }
-        .footer-name h2 { font-size: 2.5rem; margin: 0; font-weight: 500; }
-        .footer-cols { display: flex; gap: 80px; }
-        .footer-col h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: #777; margin-bottom: 15px; }
-        .footer-col p, .footer-col a { color: #333; text-decoration: none; font-size: 0.95rem; display: block; margin: 5px 0; }
-        .footer-col a:hover { text-decoration: underline; }
-
-        /* --- MOBILE --- */
         @media (max-width: 900px) {
-            nav { padding: 20px; }
-            section, #services, #contact { padding: 60px 20px; }
-            .services-grid, .about-wrapper, .contact-upper, footer { flex-direction: column; gap: 40px; }
-            .about-image { height: 400px; }
+            .nav-links, .services-grid, .about-wrapper, .modal-grid { flex-direction: column; display: block; }
+            nav, #services, #contact { padding: 20px; }
+            .modal-content { width: 95%; padding: 20px; }
         }
     </style>
 </head>
@@ -124,93 +90,130 @@
             <a href="#home">Home</a>
             <a href="#services">Services</a>
             <a href="#about">About</a>
+            <a href="my-cv.pdf#toolbar=0" target="_blank">CV</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
 
     <section id="home">
         <div class="hero-text">
-            <h1>
-                <span>Civil Engineer | Geotechnical</span><br>
-                <span>Researcher | Building Foundations</span><br>
-                <span>for the Future</span>
-            </h1>
+            <h1><span>Civil Engineer | Geotechnical Researcher</span></h1>
         </div>
     </section>
 
     <section id="services">
         <div class="container">
-            <h2 class="section-title">Our Services</h2>
+            <h2 class="section-title">Professional Expertise</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <img src="site.jpg" alt="Construction Site" class="service-img">
-                    <h3><span>Construction Site Experience</span></h3>
-                    <p>Supervised and participated in pile, column, beam, and slab construction at the Justice Tower project.</p>
+                <div class="service-card" onclick="openModal('construction')">
+                    <img src="site.jpg" class="service-img">
+                    <h3><span>Site Experience</span></h3>
+                    <p>Supervision of bored piles, columns, and slabs at Justice Tower.</p>
+                    <span class="click-hint">View Project Details →</span>
                 </div>
-                <div class="service-card">
-                    <img src="lab.jpg" alt="Geotechnical Lab" class="service-img">
-                    <h3><span>Geotechnical Research</span></h3>
-                    <p>Conducted final research on soil improvement and the effect of curing time on CBR values using Bacillus Tropicus.</p>
+                <div class="service-card" onclick="openModal('geotech')">
+                    <img src="lab.jpg" class="service-img">
+                    <h3><span>Geotech Research</span></h3>
+                    <p>Soil improvement using Bacillus Tropicus and CBR analysis.</p>
+                    <span class="click-hint">View Research Details →</span>
                 </div>
-                <div class="service-card">
-                    <img src="design.jpg" alt="Structural Design" class="service-img">
-                    <h3><span>Structural Design & Analysis</span></h3>
-                    <p>Advanced proficiency in Civil 3D and AutoCAD for structural planning and ground integrity analysis.</p>
+                <div class="service-card" onclick="openModal('design')">
+                    <img src="design.jpg" class="service-img">
+                    <h3><span>Structural Design</span></h3>
+                    <p>Advanced proficiency in AutoCAD and Civil 3D modeling.</p>
+                    <span class="click-hint">View Design Portfolio →</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
     <section id="about">
         <div class="about-wrapper">
-            <div class="about-image">
-                <img src="portrait.jpg" alt="Portrait">
-            </div>
+            <div class="about-image"><img src="portrait.jpg"></div>
             <div class="about-content">
                 <h2>About Me</h2>
-                <p>I am Mohamed Mahmoud Ahmed, a civil engineer with a focus on geotechnical research and construction projects. Originally from Sudan, I am currently based in Indonesia.</p>
-                <p>My work combines research-driven insight with practical construction experience, specializing in soil mechanics and structural stability.</p>
+                <p>Civil engineer focused on geotechnical integrity and infrastructure durability. Based in Indonesia, working globally.</p>
                 <a href="my-cv.pdf#toolbar=0" target="_blank" class="cv-button">VIEW MY CV</a>
             </div>
         </div>
     </section>
 
     <section id="contact">
-        <div class="contact-upper">
-            <div class="contact-cta">
-                <h1>Contact Me</h1>
-                <p>I’m open to collaboration, research opportunities, and career inquiries.</p>
-            </div>
-            <div class="contact-box">
-                <label>E-mail <i>(obligatoire)</i></label>
-                <input type="text" class="email-field" value="mohamed.mohamed.m.2003@gmail.com" readonly>
-                <a href="mailto:mohamed.mohamed.m.2003@gmail.com" class="contact-link">CONTACT ME</a>
+        <div style="display: flex; justify-content: space-between;">
+            <h1>Contact Me</h1>
+            <div>
+                <a href="mailto:mohamed.mohamed.m.2003@gmail.com" class="cv-button">EMAIL ME</a>
             </div>
         </div>
-
         <footer>
-            <div class="footer-name">
-                <h2>Mohamed Mahmoud Ahmed</h2>
-                <p style="font-size: 0.8rem; color: #999; margin-top: 10px;">&copy; 2026 | Professional Portfolio</p>
-            </div>
-            <div class="footer-cols">
-                <div class="footer-col">
-                    <h4>Location</h4>
-                    <p><i class="fas fa-location-dot"></i> Gowa, Indonesia</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
-                    <p><a href="mailto:mohamed.mohamed.m.2003@gmail.com"><i class="fas fa-envelope"></i> Email Me</a></p>
-                    <p>
-                        <i class="fas fa-phone"></i> 
-                        <a href="https://wa.me/6282188369179" target="_blank" style="text-decoration: none; color: inherit;">
-                            +6282188369179 (WhatsApp)
-                        </a>
-                    </p>
-                </div>
-            </div>
+            <h2>M. Mahmoud Ahmed</h2>
+            <p><a href="https://wa.me/6282188369179" target="_blank">+6282188369179 (WhatsApp)</a></p>
         </footer>
     </section>
 
+    <script>
+        const projectData = {
+            construction: {
+                title: "Construction Site Management",
+                desc: "Direct supervision of structural components at the Justice Tower project. Ensuring compliance with engineering blueprints and safety standards.",
+                list: ["Bored Pile Foundation Supervision", "Reinforcement Cage Inspection", "Concrete Slump Testing", "On-site Team Coordination"],
+                images: ["site-detail-1.jpg", "site-detail-2.jpg"] // Add these images to your folder
+            },
+            geotech: {
+                title: "Geotechnical Research",
+                desc: "Specialized research into Bio-Cementation. Improving soil bearing capacity using Bacillus Tropicus for sustainable construction.",
+                list: ["CBR Value Improvement Analysis", "Microbial-Induced Calcite Precipitation", "Laboratory Soil Classification", "Curing Time Optimization"],
+                images: ["lab-detail-1.jpg", "lab-detail-2.jpg"]
+            },
+            design: {
+                title: "Structural Design & Analysis",
+                desc: "Creation of precise 2D/3D engineering models. Focused on topographical accuracy and structural load distribution.",
+                list: ["AutoCAD Structural Detailing", "Civil 3D Terrain Modeling", "Infrastructure Planning", "Blueprint Optimization"],
+                images: ["design-detail-1.jpg", "design-detail-2.jpg"]
+            }
+        };
+
+        function openModal(projectKey) {
+            const data = projectData[projectKey];
+            const modalBody = document.getElementById('modal-body');
+            
+            modalBody.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-gallery">
+                        <img src="${data.images[0]}" onerror="this.src='site.jpg'">
+                        <img src="${data.images[1]}" onerror="this.src='lab.jpg'">
+                    </div>
+                    <div class="modal-text">
+                        <h2>${data.title}</h2>
+                        <p>${data.desc}</p>
+                        <h3>Technical Responsibilities:</h3>
+                        <ul class="tech-list">
+                            ${data.list.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            document.getElementById('projectModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('projectModal')) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
