@@ -1,263 +1,785 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Mahmoud Ahmed | Civil & Geotechnical Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        /* --- GLOBAL & SMOOTH SCROLL --- */
-        html { scroll-behavior: smooth; }
-        
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-            background-color: #ffffff;
-            color: #1a1a1a;
-            line-height: 1.6;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mohamed Mahmoud Ahmed — Civil Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 80px; background: rgba(255, 255, 255, 0.98);
-            border-bottom: 1px solid #eaeaea;
-            position: fixed; width: 100%; top: 0; z-index: 1000; box-sizing: border-box;
-        }
-        .nav-logo { font-size: 1.1rem; font-weight: 800; color: #1a1a1a; letter-spacing: 1px; }
-        .nav-links a {
-            text-decoration: none; color: #666; margin-left: 35px;
-            font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
-            transition: 0.3s ease;
-        }
-        .nav-links a:hover { color: #000; }
+  :root {
+    --sand: #F5F0E8;
+    --sand-dark: #E8DFD0;
+    --concrete: #C8BDB0;
+    --steel: #6B7280;
+    --charcoal: #2C2A26;
+    --ink: #1A1916;
+    --accent: #8B6914;
+    --accent-light: #D4A84B;
+    --rust: #7A3B1E;
+    --white: #FDFCFA;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
 
-        /* --- HERO SECTION --- */
-        #home {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('hero-bg.jpg');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: white; text-align: center;
-        }
-        .hero-text h1 { font-size: clamp(2rem, 5vw, 4rem); font-weight: 400; }
-        .hero-text h1 span { border-bottom: 5px solid white; padding-bottom: 10px; }
+  html { scroll-behavior: smooth; }
 
-        /* --- SERVICES (CLICKABLE CARDS) --- */
-        #services { padding: 120px 80px; background: #fff; }
-        .section-title { font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; }
-        .services-grid { display: flex; gap: 30px; }
-        
-        .service-card { 
-            flex: 1; cursor: pointer; transition: 0.4s ease; 
-            padding: 20px; border-radius: 12px; border: 1px solid transparent;
-        }
-        .service-card:hover { 
-            background: #f9f9f9; border-color: #eee; transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-        .service-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 8px; margin-bottom: 20px; }
-        .click-hint { font-size: 0.75rem; color: #007bff; font-weight: 800; text-transform: uppercase; margin-top: 15px; display: block; }
+  body {
+    font-family: var(--sans);
+    background: var(--sand);
+    color: var(--charcoal);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
 
-        /* --- INTERACTIVE MODAL (POPUP) --- */
-        .modal {
-            display: none; position: fixed; z-index: 9999; 
-            left: 0; top: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
-            justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: white; width: 90%; max-width: 1100px; max-height: 90vh;
-            border-radius: 20px; overflow-y: auto; position: relative; padding: 50px;
-        }
-        .close-modal { position: absolute; top: 20px; right: 30px; font-size: 2.5rem; cursor: pointer; color: #666; }
-        .modal-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
-        .modal-gallery img { width: 100%; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .tech-list { background: #f8f9fa; padding: 25px; border-radius: 12px; list-style: none; padding-left: 20px; }
-        .tech-list li { margin-bottom: 12px; font-weight: 500; display: flex; align-items: center; }
-        .tech-list i { color: #28a745; margin-right: 12px; }
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 3rem;
+    background: rgba(245, 240, 232, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--sand-dark);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--steel);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
 
-        /* --- ABOUT ME --- */
-        #about { background: #f4f4f4; min-height: 100vh; display: flex; }
-        .about-wrapper { display: flex; width: 100%; }
-        .about-image { flex: 1; }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; }
-        .about-content { flex: 1; padding: 100px 80px; display: flex; flex-direction: column; justify-content: center; }
-        .cv-button {
-            display: inline-block; background: #1a1a1a; color: white;
-            padding: 18px 45px; text-decoration: none; border-radius: 50px;
-            font-weight: 700; width: fit-content; transition: 0.3s; margin-top: 30px;
-        }
-        .cv-button:hover { background: #444; transform: scale(1.05); }
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 8rem 3rem 4rem;
+    background: var(--sand);
+    position: relative; z-index: 2;
+  }
+  .hero-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5.5vw, 5rem);
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-tagline {
+    font-size: 1.05rem;
+    color: var(--steel);
+    max-width: 380px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    background: var(--ink);
+    color: var(--sand);
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .hero-cta:hover { background: var(--accent); transform: translateY(-2px); }
+  .hero-cta span { font-size: 1.1rem; }
 
-        /* --- CONTACT & FOOTER --- */
-        #contact { background: #e6e6e6; padding: 100px 80px; }
-        .contact-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 100px; }
-        .contact-link-btn { 
-            background: #1a1a1a; color: white; padding: 20px 50px; 
-            text-decoration: none; border-radius: 40px; font-weight: 700; transition: 0.3s;
-        }
-        footer { border-top: 1px solid #ccc; padding-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .footer-col h4 { text-transform: uppercase; font-size: 0.8rem; color: #777; margin-bottom: 20px; }
-        .footer-col a { color: #1a1a1a; text-decoration: none; font-weight: 600; display: block; margin: 8px 0; }
+  .hero-right {
+    position: relative;
+    background: var(--charcoal);
+    display: flex; align-items: flex-end; justify-content: center;
+    padding: 3rem;
+    overflow: hidden;
+  }
+  .hero-geo {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .hero-geo::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border: 1px solid rgba(212, 168, 75, 0.15);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-geo::after {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    border: 1px solid rgba(212, 168, 75, 0.25);
+    border-radius: 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-initials {
+    font-family: var(--serif);
+    font-size: 10rem;
+    color: rgba(212, 168, 75, 0.12);
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    user-select: none;
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+  .hero-stats {
+    position: relative; z-index: 2;
+    display: flex; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    text-align: center;
+  }
+  .hero-stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    color: var(--accent-light);
+    display: block;
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    margin-top: 0.35rem;
+    display: block;
+  }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1024px) {
-            nav { padding: 20px; }
-            .services-grid, .about-wrapper, .modal-grid, footer, .contact-flex { flex-direction: column; display: block; }
-            #services, #contact, .about-content { padding: 60px 20px; }
-            .about-image { height: 400px; }
-            .modal-content { padding: 30px; width: 95%; }
-        }
-    </style>
+  /* ── DIVIDER ── */
+  .rule {
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--concrete), transparent);
+    margin: 0 3rem;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 3rem; }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--sand-dark);
+    max-width: 60px;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--steel);
+    margin-bottom: 1.25rem;
+    font-size: 1.02rem;
+  }
+  .about-details { display: flex; flex-direction: column; gap: 1rem; }
+  .detail-row {
+    display: flex; flex-direction: column;
+    padding: 1rem 1.25rem;
+    border-left: 2px solid var(--accent-light);
+    background: var(--sand);
+  }
+  .detail-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+  .detail-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--sand); }
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    padding: 2.5rem;
+    max-width: 720px;
+    position: relative;
+  }
+  .edu-badge {
+    display: inline-block;
+    background: var(--ink);
+    color: var(--accent-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: 1.25rem;
+  }
+  .edu-degree {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .edu-school {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+  .edu-research {
+    border-top: 1px solid var(--sand-dark);
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .edu-research-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    margin-bottom: 0.5rem;
+  }
+  .edu-research-title {
+    font-style: italic;
+    color: var(--charcoal);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .edu-tests {
+    margin-top: 1.25rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    background: var(--sand);
+    border: 1px solid var(--sand-dark);
+    color: var(--steel);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--charcoal); }
+  #experience .section-label { color: var(--accent-light); }
+  #experience .section-label::after { background: rgba(255,255,255,0.1); }
+  #experience .section-title { color: var(--sand); }
+
+  .exp-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2.5rem;
+    max-width: 760px;
+  }
+  .exp-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .exp-role {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    color: var(--sand);
+    margin-bottom: 0.3rem;
+  }
+  .exp-company { color: var(--accent-light); font-size: 0.9rem; font-weight: 500; }
+  .exp-period {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+  .exp-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.7rem;
+  }
+  .exp-list li {
+    color: var(--concrete);
+    font-size: 0.95rem;
+    padding-left: 1.25rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .exp-list li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--accent-light);
+    font-size: 0.8rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+  }
+  .skill-block {
+    padding: 1.75rem;
+    background: var(--sand);
+    border-top: 2px solid var(--accent-light);
+  }
+  .skill-block-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--concrete);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+  .skill-items { display: flex; flex-direction: column; gap: 0.5rem; }
+  .skill-item {
+    font-size: 0.92rem;
+    color: var(--charcoal);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    background: var(--accent-light);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .lang-grid {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin-top: 2.5rem; max-width: 600px;
+  }
+  .lang-chip {
+    padding: 0.6rem 1.2rem;
+    background: var(--sand);
+    border: 1px solid var(--sand-dark);
+    display: flex; flex-direction: column; align-items: center;
+    min-width: 110px;
+  }
+  .lang-name { font-weight: 500; font-size: 0.9rem; color: var(--ink); }
+  .lang-level { font-size: 0.72rem; color: var(--concrete); margin-top: 0.15rem; letter-spacing: 0.05em; }
+
+  /* ── CERTS ── */
+  #certifications { background: var(--sand); }
+  .certs-row { display: flex; flex-wrap: wrap; gap: 1rem; max-width: 860px; }
+  .cert-card {
+    flex: 1; min-width: 220px;
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--sand-dark);
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+  .cert-icon { font-size: 1.4rem; margin-bottom: 0.25rem; }
+  .cert-name { font-size: 0.95rem; font-weight: 500; color: var(--ink); line-height: 1.35; }
+  .cert-source { font-size: 0.75rem; color: var(--concrete); letter-spacing: 0.04em; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--ink); padding: 6rem 3rem; }
+  #contact .section-label { color: var(--accent-light); }
+  #contact .section-label::after { background: rgba(255,255,255,0.1); }
+  .contact-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    color: var(--sand);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 520px;
+  }
+  .contact-sub {
+    color: var(--concrete);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--sand);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: all 0.25s;
+  }
+  .contact-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 1.5rem 3rem;
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem;
+    color: var(--steel);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-label    { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-name     { animation: fadeUp 0.6s ease 0.25s both; }
+  .hero-tagline  { animation: fadeUp 0.6s ease 0.4s both; }
+  .hero-cta      { animation: fadeUp 0.6s ease 0.55s both; }
+  .hero-stats    { animation: fadeUp 0.6s ease 0.3s both; }
+  .hero-initials { animation: fadeUp 0.8s ease 0.2s both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.25rem; }
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 8rem 1.5rem 3rem; }
+    .hero-right { min-height: 240px; padding: 2rem 1.5rem; }
+    .hero-initials { font-size: 6rem; }
+    section { padding: 4rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="nav-logo">M. MAHMOUD AHMED</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">MMA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <section id="home">
-        <div class="hero-text">
-            <h1><span>Civil & Geotechnical Engineer</span></h1>
-            <p style="font-size: 1.2rem; margin-top: 20px; letter-spacing: 2px;">BUILDING FOUNDATIONS FOR THE FUTURE</p>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">Areas of Expertise</h2>
-            <div class="services-grid">
-                <div class="service-card" onclick="openModal('construction')">
-                    <img src="site.jpg" class="service-img">
-                    <h3><span>Site Experience</span></h3>
-                    <p>On-site supervision and structural verification at the Justice Tower.</p>
-                    <span class="click-hint">View Field Work →</span>
-                </div>
-                <div class="service-card" onclick="openModal('geotech')">
-                    <img src="lab.jpg" class="service-img">
-                    <h3><span>Geotech Research</span></h3>
-                    <p>Bio-cementation studies using Bacillus Tropicus for soil improvement.</p>
-                    <span class="click-hint">View Lab Research →</span>
-                </div>
-                <div class="service-card" onclick="openModal('design')">
-                    <img src="design.jpg" class="service-img">
-                    <h3><span>Structural Design</span></h3>
-                    <p>Precision 2D/3D modeling using AutoCAD and Civil 3D software.</p>
-                    <span class="click-hint">View Design Portfolio →</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modal-body">
-                </div>
-        </div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-label">Civil Engineer · Geotechnical Research · Indonesia</p>
+    <h1 class="hero-name">
+      Mohamed<br/>
+      Mahmoud<br/>
+      <em>Ahmed</em>
+    </h1>
+    <p class="hero-tagline">
+      Fresh civil engineering graduate from Hasanuddin University with hands-on experience in geotechnical laboratory testing and structural construction. Actively seeking internship or entry-level opportunities across Indonesia.
+    </p>
+    <a href="#contact" class="hero-cta">
+      Get in Touch <span>→</span>
+    </a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-geo"></div>
+    <div class="hero-initials">MMA</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">5+</span>
+        <span class="hero-stat-label">Lab Tests<br/>Mastered</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">3</span>
+        <span class="hero-stat-label">Languages<br/>Spoken</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4</span>
+        <span class="hero-stat-label">Years<br/>at UNHAS</span>
+      </div>
     </div>
+  </div>
+</section>
 
-    <section id="about">
-        <div class="about-wrapper">
-            <div class="about-image"><img src="portrait.jpg" alt="Mohamed Mahmoud Ahmed"></div>
-            <div class="about-content">
-                <h2 style="font-size: 3rem;">About Me</h2>
-                <p>I am Mohamed Mahmoud Ahmed, a Civil Engineer specializing in Geotechnical research and structural management. My background in Sudan and current work in Indonesia allow me to bring a global perspective to local infrastructure challenges.</p>
-                <p>I bridge the gap between theoretical soil mechanics and practical site execution, ensuring that every structure is built on a scientifically sound foundation.</p>
-                <a href="my-cv.pdf#toolbar=0" target="_blank" class="cv-button">VIEW MY CV (NEW TAB)</a>
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">A builder by nature,<br/>an engineer by training.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I am a Sudanese civil engineering graduate completing my degree at Hasanuddin University in Makassar, Indonesia — on an international scholarship. My final research explored bacterial soil stabilization using Bacillus Tropicus, measuring the effect of curing time on California Bearing Ratio (CBR) values.
+      </p>
+      <p>
+        Beyond the laboratory, I gained real-world construction exposure through an internship on the Justice Tower project at the Faculty of Law, Hasanuddin University — participating in structural works from pile caps to slab construction.
+      </p>
+      <p>
+        I combine classical engineering knowledge with a genuine interest in AI tools and digital workflows, which I believe will become increasingly important in how infrastructure projects are planned and executed.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="detail-row">
+        <span class="detail-label">Full Name</span>
+        <span class="detail-value">Mohamed Mahmoud Ahmed</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Date of Birth</span>
+        <span class="detail-value">July 2003</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Nationality</span>
+        <span class="detail-value">Sudanese</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Current Location</span>
+        <span class="detail-value">Indonesia</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Availability</span>
+        <span class="detail-value">Immediately Available — Open to site &amp; office roles</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-label">Career Objective</span>
+        <span class="detail-value">Internship or entry-level position in civil engineering / construction in Indonesia</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="contact">
-        <div class="contact-flex">
-            <div>
-                <h1 style="font-size: 4rem; margin: 0;">Get in Touch</h1>
-                <p style="font-size: 1.2rem; color: #555;">Ready to discuss research or project collaborations.</p>
-            </div>
-            <a href="mailto:mohamed.mohamed.m.2003@gmail.com" class="contact-link-btn">SEND EMAIL</a>
-        </div>
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Academic Background</p>
+  <h2 class="section-title">Educated to build<br/>Indonesia's future.</h2>
+  <div class="edu-card">
+    <span class="edu-badge">International Scholarship</span>
+    <p class="edu-degree">Bachelor of Civil Engineering</p>
+    <p class="edu-school">Hasanuddin University (UNHAS) · Makassar, Indonesia</p>
+    <p style="color: var(--steel); font-size: 0.9rem;">Status: Completed — Awaiting Official Certificate (Expected May/June 2026)</p>
+    <div class="edu-research">
+      <p class="edu-research-label">Final Year Research</p>
+      <p class="edu-research-title">"The Effect of Curing Time on California Bearing Ratio (CBR) Value Using Bacteria (Bacillus Tropicus)"</p>
+    </div>
+    <div class="edu-tests">
+      <span class="tag">Specific Gravity Test</span>
+      <span class="tag">Sieve Analysis</span>
+      <span class="tag">Moisture Content Test</span>
+      <span class="tag">Compaction Test</span>
+      <span class="tag">CBR Test</span>
+      <span class="tag">Bacterial Stabilization</span>
+      <span class="tag">Soaked vs Unsoaked Analysis</span>
+    </div>
+  </div>
+</section>
 
-        <footer>
-            <div>
-                <h2 style="margin: 0;">Mohamed Mahmoud Ahmed</h2>
-                <p style="color: #999; font-size: 0.8rem; margin-top: 10px;">&copy; 2026 | Engineering Portfolio</p>
-            </div>
-            <div style="display: flex; gap: 60px;">
-                <div class="footer-col">
-                    <h4>Location</h4>
-                    <p>Gowa, Indonesia</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Direct Contact</h4>
-                    <a href="mailto:mohamed.mohamed.m.2003@gmail.com">Email Me</a>
-                    <a href="https://wa.me/6282188369179" target="_blank">WhatsApp Chat</a>
-                </div>
-            </div>
-        </footer>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Internship</p>
+  <h2 class="section-title">From classroom to<br/>construction site.</h2>
+  <div class="exp-card">
+    <div class="exp-header">
+      <div>
+        <p class="exp-role">Site Engineering Intern</p>
+        <p class="exp-company">PT. Ikram Tiga Berlian — Justice Tower, Faculty of Law, UNHAS</p>
+      </div>
+      <span class="exp-period">Floors 1–3</span>
+    </div>
+    <ul class="exp-list">
+      <li>Participated in structural works across the 1st through 3rd floors of an active construction project.</li>
+      <li>Involved in pile cap preparation and installation, column, beam, and slab construction sequences.</li>
+      <li>Carried out reinforcement tasks including rebar cutting, bending, and placement according to structural drawings.</li>
+      <li>Assisted with formwork installation and dismantling cycles at multiple structural levels.</li>
+      <li>Supported quality control through slump tests and concrete compressive strength sampling.</li>
+      <li>Conducted regular site inspections and observed bored pile operations and finishing stages.</li>
+    </ul>
+  </div>
+</section>
 
-    <script>
-        const projectData = {
-            construction: {
-                title: "Site Supervision: Justice Tower",
-                desc: "Full-scale site supervision focusing on foundation integrity. I managed the installation of bored piles and reinforcement cages to ensure structural longevity.",
-                list: ["Bored Pile Supervision", "Reinforcement Inspection", "Concrete Slump Testing", "Blueprint Verification"],
-                images: ["Construction 1.jpeg", "Construction 2.jpeg", "Construction 3.jpeg"]
-            },
-            geotech: {
-                title: "Geotechnical Research & Lab",
-                desc: "Investigating the effects of Bacillus Tropicus on soil stabilization. My research focused on increasing CBR (California Bearing Ratio) values through bio-cementation.",
-                list: ["Bio-Cementation (MICP)", "CBR Strength Testing", "Soil Curing Analysis", "Sustainable Lab Research"],
-                images: ["Lab 1.jpg", "Lab 2.jpg", "Lab 3.jpg"]
-            },
-            design: {
-                title: "Structural Design & AutoCAD",
-                desc: "Utilizing modern software to create high-precision engineering plans. Expertise includes Civil 3D terrain modeling and structural drafting.",
-                list: ["AutoCAD Drafting", "Civil 3D Modeling", "Structural Detailing", "Quantity Surveying Assistance"],
-                images: ["design.jpg", "site.jpg", "lab.jpg"] // Replace these as you get more design files
-            }
-        };
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Technical Profile</p>
+  <h2 class="section-title">Tools, tests,<br/>and technologies.</h2>
+  <div class="skills-grid">
+    <div class="skill-block">
+      <p class="skill-block-label">Engineering Software</p>
+      <div class="skill-items">
+        <span class="skill-item">AutoCAD</span>
+        <span class="skill-item">Civil 3D (in progress)</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-label">Geotechnical</p>
+      <div class="skill-items">
+        <span class="skill-item">Soil Testing & Analysis</span>
+        <span class="skill-item">Geotechnical Engineering</span>
+        <span class="skill-item">CBR Testing</span>
+        <span class="skill-item">Compaction Analysis</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-label">Construction</p>
+      <div class="skill-items">
+        <span class="skill-item">Structural Work Execution</span>
+        <span class="skill-item">Formwork Systems</span>
+        <span class="skill-item">Quality Control</span>
+        <span class="skill-item">Site Inspection</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-label">Digital & AI</p>
+      <div class="skill-items">
+        <span class="skill-item">AI Productivity Tools</span>
+        <span class="skill-item">Engineering Workflows</span>
+        <span class="skill-item">Content Creation</span>
+        <span class="skill-item">Digital App Development</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-label">Soft Skills</p>
+      <div class="skill-items">
+        <span class="skill-item">Research & Analysis</span>
+        <span class="skill-item">Team Collaboration</span>
+        <span class="skill-item">Cross-cultural Communication</span>
+        <span class="skill-item">Adaptability</span>
+      </div>
+    </div>
+    <div class="skill-block">
+      <p class="skill-block-label">Professional</p>
+      <div class="skill-items">
+        <span class="skill-item">AutoCAD Design Work</span>
+        <span class="skill-item">Engineering YouTube Content</span>
+        <span class="skill-item">Project Documentation</span>
+      </div>
+    </div>
+  </div>
 
-        function openModal(projectKey) {
-            const data = projectData[projectKey];
-            const modalBody = document.getElementById('modal-body');
-            
-            modalBody.innerHTML = `
-                <div class="modal-grid">
-                    <div class="modal-gallery">
-                        ${data.images.map(img => `<img src="${img}" onerror="this.src='site.jpg'" alt="Technical Photo">`).join('')}
-                    </div>
-                    <div class="modal-text">
-                        <h2 style="font-size: 2.5rem; color: #1a1a1a;">${data.title}</h2>
-                        <p style="font-size: 1.1rem; color: #444; margin: 25px 0;">${data.desc}</p>
-                        <h3 style="margin-bottom: 15px;">Technical Competencies:</h3>
-                        <ul class="tech-list">
-                            ${data.list.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `;
-            document.getElementById('projectModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
+  <h3 style="font-family: var(--serif); font-size: 1.3rem; color: var(--ink); margin-top: 3.5rem; margin-bottom: 0.25rem;">Languages</h3>
+  <div class="lang-grid">
+    <div class="lang-chip">
+      <span class="lang-name">Arabic</span>
+      <span class="lang-level">Native</span>
+    </div>
+    <div class="lang-chip">
+      <span class="lang-name">English</span>
+      <span class="lang-level">Fluent</span>
+    </div>
+    <div class="lang-chip">
+      <span class="lang-name">Indonesian</span>
+      <span class="lang-level">Basic — Improving</span>
+    </div>
+    <div class="lang-chip">
+      <span class="lang-name">French</span>
+      <span class="lang-level">Beginner</span>
+    </div>
+  </div>
+</section>
 
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label">Recognition</p>
+  <h2 class="section-title">Certified in engineering<br/>and beyond.</h2>
+  <div class="certs-row">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <p class="cert-name">AI Fluency for Students</p>
+      <p class="cert-source">Certificate of Completion</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚙️</div>
+      <p class="cert-name">Claude Code in Action</p>
+      <p class="cert-source">Certificate of Completion</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📐</div>
+      <p class="cert-name">Bachelor of Civil Engineering</p>
+      <p class="cert-source">Hasanuddin University · 2026</p>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏗️</div>
+      <p class="cert-name">Construction Site Internship</p>
+      <p class="cert-source">PT. Ikram Tiga Berlian</p>
+    </div>
+  </div>
+</section>
 
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('projectModal')) { closeModal(); }
-        }
-    </script>
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Let's Connect</p>
+  <h2 class="contact-title">Open to opportunities across Indonesia.</h2>
+  <p class="contact-sub">
+    Whether you're looking for a driven fresh graduate for an internship, a junior site role, or an engineering support position — I am available immediately and based in Gowa, Indonesia.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:mohamed.mohamed.m.2003@gmail.com" class="contact-link">📧 Email Me</a>
+    <a href="https://wa.me/6282188369179" target="_blank" class="contact-link">💬 WhatsApp</a>
+    <a href="my-cv.pdf#toolbar=0" target="_blank" class="contact-link">Download CV →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Mohamed Mahmoud Ahmed</span>
+  <span>Civil Engineer · Gowa, Indonesia</span>
+</footer>
+
 </body>
 </html>
